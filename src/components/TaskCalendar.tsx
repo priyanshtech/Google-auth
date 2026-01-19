@@ -6,71 +6,71 @@ import 'react-calendar/dist/Calendar.css';
 
 // Define the Task type
 type Task = {
-    id: string;
-    title: string;
-    date: string;
-    completed: boolean;
-    priority: string;
+  id: string;
+  title: string;
+  date: string;
+  completed: boolean;
+  priority: string;
 };
 
 type TaskCalendarProps = {
-    tasks: Task[];
-    onDateSelect: (date: Date) => void;
+  tasks: Task[];
+  onDateSelect: (date: Date) => void;
 };
 
 export default function TaskCalendar({ tasks, onDateSelect }: TaskCalendarProps) {
-    const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-    // Handle when user clicks a date
-    const handleDateClick = (date: Date) => {
-        setSelectedDate(date);
-        onDateSelect(date);
-    };
+  // Handle when user clicks a date
+  const handleDateClick = (date: Date) => {
+    setSelectedDate(date);
+    onDateSelect(date);
+  };
 
-    // Show dots on dates that have tasks
-    const tileContent = ({ date }: { date: Date }) => {
-        const dateStr = date.toISOString().split('T')[0];
+  // Show dots on dates that have tasks
+  const tileContent = ({ date }: { date: Date }) => {
+    const dateStr = date.toISOString().split('T')[0];
 
-        // Check if this date has any tasks
-        const hasTasks = tasks.some(task => {
-            const taskDate = new Date(task.date).toISOString().split('T')[0];
-            return taskDate === dateStr;
-        });
+    // Check if this date has any tasks
+    const hasTasks = tasks.some(task => {
+      const taskDate = new Date(task.date).toISOString().split('T')[0];
+      return taskDate === dateStr;
+    });
 
-        // Show a dot if there are tasks on this date
-        if (hasTasks) {
-            return (
-                <div className="flex justify-center mt-1">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
-                </div>
-            );
-        }
+    // Show a dot if there are tasks on this date
+    if (hasTasks) {
+      return (
+        <div className="flex justify-center mt-1">
+          <div className="w-3 h-1.5 bg-blue-500 rounded-full"></div>
+        </div>
+      );
+    } 3
 
-        return null;
-    };
+    return null;
+  };
 
-    // Add custom class to tiles with tasks
-    const tileClassName = ({ date }: { date: Date }) => {
-        const dateStr = date.toISOString().split('T')[0];
-        const hasTasks = tasks.some(task => {
-            const taskDate = new Date(task.date).toISOString().split('T')[0];
-            return taskDate === dateStr;
-        });
+  // Add custom class to tiles with tasks
+  const tileClassName = ({ date }: { date: Date }) => {
+    const dateStr = date.toISOString().split('T')[0];
+    const hasTasks = tasks.some(task => {
+      const taskDate = new Date(task.date).toISOString().split('T')[0];
+      return taskDate === dateStr;
+    });
 
-        return hasTasks ? 'has-tasks' : '';
-    };
+    return hasTasks ? 'has-tasks' : '';
+  };
 
-    return (
-        <div className="calendar-container">
-            <Calendar
-                onChange={(value) => handleDateClick(value as Date)}
-                value={selectedDate}
-                tileContent={tileContent}
-                tileClassName={tileClassName}
-                className="rounded-lg border shadow-sm"
-            />
+  return (
+    <div className="calendar-container">
+      <Calendar
+        onChange={(value) => handleDateClick(value as Date)}
+        value={selectedDate}
+        tileContent={tileContent}
+        tileClassName={tileClassName}
+        className="rounded-lg border shadow-sm text-black"
+      />
 
-            <style jsx global>{`
+      <style jsx global>{`
         .calendar-container {
           max-width: 100%;
         }
@@ -91,6 +91,11 @@ export default function TaskCalendar({ tasks, onDateSelect }: TaskCalendarProps)
           background-color: #f3f4f6;
         }
 
+        .dark .react-calendar__tile:enabled:hover,
+        .dark .react-calendar__tile:enabled:focus {
+          background-color: #374151;
+        }
+
         .react-calendar__tile--active {
           background-color: #3b82f6 !important;
           color: white;
@@ -106,7 +111,11 @@ export default function TaskCalendar({ tasks, onDateSelect }: TaskCalendarProps)
         }
 
         .react-calendar__month-view__days__day--weekend {
-          color: #ef4444;
+          color: #141212ff;
+        } 
+
+        .dark .react-calendar__month-view__days__day--weekend {
+          color: #ededed;
         }
 
         .react-calendar__navigation button {
@@ -118,7 +127,12 @@ export default function TaskCalendar({ tasks, onDateSelect }: TaskCalendarProps)
         .react-calendar__navigation button:enabled:focus {
           background-color: #f3f4f6;
         }
+
+        .dark .react-calendar__navigation button:enabled:hover,
+        .dark .react-calendar__navigation button:enabled:focus {
+          background-color: #374151;
+        }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }

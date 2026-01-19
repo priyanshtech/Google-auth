@@ -44,13 +44,13 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }: TaskFormP
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-                <h2 className="text-2xl font-bold mb-4">Add New Task</h2>
+            <div className="bg-card rounded-lg shadow-xl max-w-md w-full p-6">
+                <h2 className="text-2xl font-bold mb-4 text-card-foreground">Add New Task</h2>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {/* Title Input */}
                     <div>
-                        <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="title" className="block text-sm font-medium text-foreground mb-1">
                             Task Title *
                         </label>
                         <input
@@ -58,7 +58,7 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }: TaskFormP
                             id="title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-background text-foreground"
                             placeholder="e.g., Buy groceries"
                             required
                         />
@@ -66,14 +66,14 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }: TaskFormP
 
                     {/* Description Input */}
                     <div>
-                        <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="description" className="block text-sm font-medium text-foreground mb-1">
                             Description (Optional)
                         </label>
                         <textarea
                             id="description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-background text-foreground"
                             placeholder="Add more details..."
                             rows={3}
                         />
@@ -81,14 +81,14 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }: TaskFormP
 
                     {/* Priority Select */}
                     <div>
-                        <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="priority" className="block text-sm font-medium text-foreground mb-1">
                             Priority
                         </label>
                         <select
                             id="priority"
                             value={priority}
                             onChange={(e) => setPriority(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-background text-foreground"
                         >
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
@@ -97,8 +97,8 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }: TaskFormP
                     </div>
 
                     {/* Date Display */}
-                    <div className="bg-gray-50 p-3 rounded-md">
-                        <p className="text-sm text-gray-600">
+                    <div className="bg-muted p-3 rounded-md">
+                        <p className="text-sm text-muted-foreground">
                             <span className="font-medium">Date:</span>{' '}
                             {selectedDate.toLocaleDateString('en-US', {
                                 weekday: 'long',

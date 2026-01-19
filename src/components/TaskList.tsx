@@ -45,7 +45,7 @@ export default function TaskList({ tasks, selectedDate, onToggle, onDelete }: Ta
             <h2 className="text-xl font-bold mb-4">{dateStr}</h2>
 
             {tasks.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
+                <div className="text-center py-8 text-muted-foreground">
                     <p>No tasks for this date</p>
                     <p className="text-sm mt-2">Click "Add Task" to create one</p>
                 </div>
@@ -54,7 +54,7 @@ export default function TaskList({ tasks, selectedDate, onToggle, onDelete }: Ta
                     {tasks.map(task => (
                         <div
                             key={task.id}
-                            className={`task-item border rounded-lg p-4 transition-all ${task.completed ? 'bg-gray-50 opacity-75' : 'bg-white'
+                            className={`task-item border border-border rounded-lg p-4 transition-all ${task.completed ? 'bg-muted opacity-75' : 'bg-card'
                                 }`}
                         >
                             <div className="flex items-start gap-3">
@@ -69,14 +69,14 @@ export default function TaskList({ tasks, selectedDate, onToggle, onDelete }: Ta
                                 {/* Task Content */}
                                 <div className="flex-1">
                                     <h3
-                                        className={`font-semibold ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'
+                                        className={`font-semibold ${task.completed ? 'line-through text-muted-foreground' : 'text-card-foreground'
                                             }`}
                                     >
                                         {task.title}
                                     </h3>
 
                                     {task.description && (
-                                        <p className="text-sm text-gray-600 mt-1">{task.description}</p>
+                                        <p className="text-sm text-muted-foreground mt-1">{task.description}</p>
                                     )}
 
                                     {/* Priority Badge */}

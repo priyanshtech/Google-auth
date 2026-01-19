@@ -153,14 +153,14 @@ export default function DashboardClient({ user }: DashboardClientProps) {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
             {/* Header */}
-            <header className="bg-white shadow-sm border-b">
+            <header className="bg-card shadow-sm border-b border-border">
                 <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center">
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900">My Task Manager</h1>
-                            <p className="text-sm text-gray-600">Welcome, {user?.name || user?.email}</p>
+                            <h1 className="text-2xl font-bold text-card-foreground">My Task Manager</h1>
+                            <p className="text-sm text-muted-foreground">Welcome, {user?.name || user?.email}</p>
                         </div>
                         <a href="/auth/logout" className="border-1 px-2 rounded-md hover:scale-108 transition-all duration-300">Logout</a>
                     </div>
@@ -170,25 +170,25 @@ export default function DashboardClient({ user }: DashboardClientProps) {
             {/* Main Content */}
             <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
                 {error && (
-                    <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    <div className="mb-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded">
                         {error}
                     </div>
                 )}
 
                 {loading ? (
                     <div className="text-center py-12">
-                        <p className="text-gray-600">Loading tasks...</p>
+                        <p className="text-muted-foreground">Loading tasks...</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Calendar Section */}
-                        <div className="bg-white rounded-lg shadow p-6">
-                            <h2 className="text-lg font-semibold mb-4">Calendar</h2>
+                        <div className="bg-card rounded-lg shadow p-6">
+                            <h2 className="text-lg font-semibold mb-4 text-card-foreground">Calendar</h2>
                             <TaskCalendar tasks={tasks} onDateSelect={handleDateSelect} />
                         </div>
 
                         {/* Tasks Section */}
-                        <div className="bg-white rounded-lg shadow p-6">
+                        <div className="bg-card rounded-lg shadow p-6">
                             <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-lg font-semibold">Tasks</h2>
                                 <button
@@ -211,19 +211,19 @@ export default function DashboardClient({ user }: DashboardClientProps) {
 
                 {/* Task Statistics */}
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-white rounded-lg shadow p-4">
-                        <p className="text-sm text-gray-600">Total Tasks</p>
-                        <p className="text-2xl font-bold text-gray-900">{tasks.length}</p>
+                    <div className="bg-card rounded-lg shadow p-4">
+                        <p className="text-sm text-muted-foreground">Total Tasks</p>
+                        <p className="text-2xl font-bold text-card-foreground">{tasks.length}</p>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-4">
-                        <p className="text-sm text-gray-600">Completed</p>
-                        <p className="text-2xl font-bold text-green-600">
+                    <div className="bg-card rounded-lg shadow p-4">
+                        <p className="text-sm text-muted-foreground">Completed</p>
+                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                             {tasks.filter(t => t.completed).length}
                         </p>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-4">
-                        <p className="text-sm text-gray-600">Pending</p>
-                        <p className="text-2xl font-bold text-orange-600">
+                    <div className="bg-card rounded-lg shadow p-4">
+                        <p className="text-sm text-muted-foreground">Pending</p>
+                        <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
                             {tasks.filter(t => !t.completed).length}
                         </p>
                     </div>
