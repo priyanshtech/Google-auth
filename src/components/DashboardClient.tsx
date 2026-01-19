@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import TaskCalendar from '@/components/TaskCalendar';
-import TaskList from '@/components/TaskList';
+import DashboardHeader from '@/components/DashboardHeader';
+import CalendarSection from '@/components/CalendarSection';
+import TaskSection from '@/components/TaskSection';
+import TaskStatistics from '@/components/TaskStatistics';
 import TaskForm from '@/components/TaskForm';
 
 type Task = {
@@ -141,7 +143,7 @@ export default function DashboardClient({ user }: DashboardClientProps) {
 
             if (response.ok) {
                 await fetchTasks(); // Refresh tasks
-                setShowTaskForm(false); // Close form - THIS FIXES THE UI ISSUE
+                setShowTaskForm(false); // Close form
             } else {
                 const data = await response.json();
                 alert(data.error || 'Failed to create task');
@@ -154,18 +156,7 @@ export default function DashboardClient({ user }: DashboardClientProps) {
 
     return (
         <div className="min-h-screen bg-background">
-            {/* Header */}
-            <header className="bg-card shadow-sm border-b border-border">
-                <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <h1 className="text-2xl font-bold text-card-foreground">My Task Manager</h1>
-                            <p className="text-sm text-muted-foreground">Welcome, {user?.name || user?.email}</p>
-                        </div>
-                        <a href="/auth/logout" className="border-1 px-2 rounded-md hover:scale-108 transition-all duration-300">Logout</a>
-                    </div>
-                </div>
-            </header>
+            <DashboardHeader userName={user?.name || user?.email} />
 
             {/* Main Content */}
             <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -181,53 +172,22 @@ export default function DashboardClient({ user }: DashboardClientProps) {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        {/* Calendar Section */}
-                        <div className="bg-card rounded-lg shadow p-6">
-                            <h2 className="text-lg font-semibold mb-4 text-card-foreground">Calendar</h2>
-                            <TaskCalendar tasks={tasks} onDateSelect={handleDateSelect} />
-                        </div>
+                        <CalendarSection
+                            tasks={tasks}
+                            onDateSelect={handleDateSelect}
+                        />
 
-                        {/* Tasks Section */}
-                        <div className="bg-card rounded-lg shadow p-6">
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold">Tasks</h2>
-                                <button
-                                    onClick={() => setShowTaskForm(true)}
-                                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
-                                >
-                                    + Add Task
-                                </button>
-                            </div>
-
-                            <TaskList
-                                tasks={filteredTasks}
-                                selectedDate={selectedDate}
-                                onToggle={handleToggleTask}
-                                onDelete={handleDeleteTask}
-                            />
-                        </div>
+                        <TaskSection
+                            tasks={filteredTasks}
+                            selectedDate={selectedDate}
+                            onToggle={handleToggleTask}
+                            onDelete={handleDeleteTask}
+                            onAddTask={() => setShowTaskForm(true)}
+                        />
                     </div>
                 )}
 
-                {/* Task Statistics */}
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-card rounded-lg shadow p-4">
-                        <p className="text-sm text-muted-foreground">Total Tasks</p>
-                        <p className="text-2xl font-bold text-card-foreground">{tasks.length}</p>
-                    </div>
-                    <div className="bg-card rounded-lg shadow p-4">
-                        <p className="text-sm text-muted-foreground">Completed</p>
-                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-                            {tasks.filter(t => t.completed).length}
-                        </p>
-                    </div>
-                    <div className="bg-card rounded-lg shadow p-4">
-                        <p className="text-sm text-muted-foreground">Pending</p>
-                        <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-                            {tasks.filter(t => !t.completed).length}
-                        </p>
-                    </div>
-                </div>
+                <TaskStatistics tasks={tasks} />
             </main>
 
             {/* Task Form Modal */}
