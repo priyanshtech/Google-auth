@@ -44,7 +44,7 @@ export default function TaskCalendar({ tasks, onDateSelect }: TaskCalendarProps)
           <div className="w-3 h-1.5 bg-blue-500 rounded-full"></div>
         </div>
       );
-    } 3
+    }
 
     return null;
   };
@@ -61,14 +61,17 @@ export default function TaskCalendar({ tasks, onDateSelect }: TaskCalendarProps)
   };
 
   return (
-    <div className="calendar-container">
-      <Calendar
-        onChange={(value) => handleDateClick(value as Date)}
-        value={selectedDate}
-        tileContent={tileContent}
-        tileClassName={tileClassName}
-        className="rounded-lg border shadow-sm text-black "
-      />
+    <div className="bg-card rounded-lg shadow p-6">
+      <h2 className="text-lg font-semibold mb-4 text-card-foreground">Calendar</h2>
+      <div className="calendar-container">
+        <Calendar
+          onChange={(value) => handleDateClick(value as Date)}
+          value={selectedDate}
+          tileContent={tileContent}
+          tileClassName={tileClassName}
+          className="rounded-lg border shadow-sm text-black"
+        />
+      </div>
     </div>
   );
 }
