@@ -108,7 +108,6 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }: TaskFormP
                             })}
                         </p>
                     </div>
-
                     {/* Buttons */}
                     <div className="flex gap-3 pt-2">
                         <button

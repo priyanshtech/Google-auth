@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import DashboardHeader from '@/components/DashboardHeader';
 import CalendarSection from '@/components/CalendarSection';
-import TaskSection from '@/components/TaskSection';
-import TaskStatistics from '@/components/TaskStatistics';
-import TaskForm from '@/components/TaskForm';
+import TaskSection from '@/components/tasks/TaskSection';
+import TaskStatistics from '@/components/tasks/TaskStatistics';
+import TaskForm from '@/components/tasks/AddTask';
 
 type Task = {
     id: string;
