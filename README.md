@@ -3,7 +3,8 @@
 A modern, personalized daily task manager built with Next.js, featuring Google authentication and a beautiful calendar interface.
 
 ### Landing Page
-![MiniCal Landing Page](public/screenshots/Screenshot%202026-01-21%20at%207.08.43%20PM.png)
+<img width="1456" height="795" alt="Screenshot 2026-01-21 at 7 08 43 PM" src="https://github.com/user-attachments/assets/6ebaddcc-16d9-43ef-aa2c-00de72178bb5" />
+
 
 
 ## ✨ Features
