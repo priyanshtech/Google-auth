@@ -13,28 +13,6 @@ export default function TaskCalendar({ tasks, onDateSelect }) {
         onDateSelect(date);
     };
 
-    // Show dots on dates that have tasks
-    const tileContent = ({ date }) => {
-        const dateStr = date.toISOString().split('T')[0];
-
-        // Check if this date has any tasks
-        const hasTasks = tasks.some(task => {
-            const taskDate = new Date(task.date).toISOString().split('T')[0];
-            return taskDate === dateStr;
-        });
-
-        // Show a dot if there are tasks on this date
-        if (hasTasks) {
-            return (
-                <div className="flex justify-center mt-1">
-                    <div className="w-1 h-1 bg-primary rounded-full"></div>
-                </div>
-            );
-        }
-
-        return null;
-    };
-
     // Add custom class to tiles with tasks
     const tileClassName = ({ date }) => {
         const dateStr = date.toISOString().split('T')[0];
@@ -53,7 +31,6 @@ export default function TaskCalendar({ tasks, onDateSelect }) {
                 <Calendar
                     onChange={(value) => handleDateClick(value)}
                     value={selectedDate}
-                    tileContent={tileContent}
                     tileClassName={tileClassName}
                     className="rounded-md border border-border"
                 />

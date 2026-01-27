@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import DashboardHeader from '@/components/Dashboard/DashboardHeader';
+import DashboardHeader from '@/components/Header/DashboardHeader';
 import TaskCalendar from '@/components/Dashboard/Calender/TaskCalendar';
 import TaskSection from '@/components/Dashboard/tasks/TaskSection';
 import TaskStatistics from '@/components/Dashboard/Statistics/TaskStatistics';

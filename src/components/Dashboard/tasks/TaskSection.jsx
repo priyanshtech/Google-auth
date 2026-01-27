@@ -36,7 +36,7 @@ export default function TaskSection({
                 <h2 className="text-base font-medium">Tasks</h2>
                 <button
                     onClick={onAddTask}
-                    className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity text-sm font-medium"
+                    className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md hover:opacity-90 transition-opacity text-sm font-medium "
                 >
                     Add Task
                 </button>
@@ -63,7 +63,7 @@ export default function TaskSection({
                                         type="checkbox"
                                         checked={task.completed}
                                         onChange={() => onToggle(task.id, !task.completed)}
-                                        className="mt-0.5 w-4 h-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"
+                                        className="mt-0.5 w-4 h-4 rounded border-border cursor-pointer accent-black"
                                     />
 
                                     <div className="flex-1 min-w-0">

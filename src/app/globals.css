@@ -66,7 +66,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.205 0 0);
   /* Subtle indigo primary color */
-  --primary: oklch(0.6 0.15 265);
+  --primary: oklch(0% 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.96 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -80,7 +80,7 @@
   --border: oklch(0.94 0 0);
   --input: oklch(0.94 0 0);
   /* Subtle indigo ring */
-  --ring: oklch(0.6 0.15 265);
+  --ring: oklch(0% 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -104,7 +104,7 @@
   --popover: oklch(0.18 0 0);
   --popover-foreground: oklch(0.95 0 0);
   /* Subtle indigo primary in dark mode */
-  --primary: oklch(0.65 0.15 265);
+  --primary: oklch(72.758% 0.21832 142.78);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.24 0 0);
   --secondary-foreground: oklch(0.95 0 0);
@@ -114,8 +114,8 @@
   --accent-foreground: oklch(0.95 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.65 0.15 265);
+  --input: oklch(68.669% 0.17845 143.203 / 0.12);
+  --ring: oklch(0% 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -167,36 +167,43 @@
 
   .react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
-    background-color: oklch(0.97 0 0);
+    background-color: oklch(9.693% 0.00001 271.152);
     border-radius: 0.375rem;
   }
 
   .dark .react-calendar__tile:enabled:hover,
   .dark .react-calendar__tile:enabled:focus {
-    background-color: oklch(0.22 0 0);
+    background-color: oklch(72.393% 0.16678 147.104);
   }
 
   .react-calendar__tile--active {
-    background-color: oklch(0.6 0.15 265) !important;
-    color: white;
+    background-color: oklch(78.635% 0.19435 146.135) !important;
+    color: rgb(127, 212, 127);
     border-radius: 0.375rem;
   }
 
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background-color: oklch(0.55 0.15 265) !important;
+    background-color: oklch(11.492% 0.00001 271.152) !important;
   }
 
   .react-calendar__tile.has-tasks {
-    font-weight: 500;
+    background-color: oklch(85.3% 0.00219 14.758) !important;
+    border-radius: 0.375rem;
+
+    padding: 0.375rem;
   }
 
-  .react-calendar__month-view__days__day--weekend {
-    color: oklch(0.205 0 0);
+  .react-calendar__month-view__days__day--weekend,
+  .react-calendar__month-view__days__day--weekend abbr {
+    background-color: oklch(100% 0.00011 271.152) !important;
+    color: oklch(0% 0 0) !important;
+    background-clip: padding-box;
   }
 
-  .dark .react-calendar__month-view__days__day--weekend {
-    color: oklch(0.95 0 0);
+  .dark .react-calendar__month-view__days__day--weekend,
+  .dark .react-calendar__month-view__days__day--weekend abbr {
+    color: oklch(66.403% 0.14054 135.033) !important;
   }
 
   .react-calendar__navigation button {
@@ -206,12 +213,12 @@
 
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
-    background-color: oklch(0.97 0 0);
+    background-color: oklch(0% 0 0);
     border-radius: 0.375rem;
   }
 
   .dark .react-calendar__navigation button:enabled:hover,
   .dark .react-calendar__navigation button:enabled:focus {
-    background-color: oklch(0.22 0 0);
+    background-color: oklch(67.621% 0.14732 144.19);
   }
 }

@@ -6,7 +6,10 @@ export default function DashboardHeader({ userName }) {
             <div className="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
                     <div>
-                        <h1 className="text-xl font-semibold text-card-foreground">MiniCal</h1>
+                        <span className="text-lg mr-1 font-bold bg-yellow-200 rounded-sm p-1">M</span>
+                        <span className="text-xl font-bold tracking-tight">
+                            MiniCal
+                        </span>
                         <p className="text-xs text-muted-foreground mt-0.5">Welcome back, {userName}</p>
                     </div>
                     <a

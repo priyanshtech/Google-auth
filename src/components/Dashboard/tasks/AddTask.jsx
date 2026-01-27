@@ -32,8 +32,8 @@ export default function TaskForm({ selectedDate, onSubmit, onCancel }) {
     };
 
     return (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-card border border-border rounded-lg shadow-lg max-w-md w-full p-6">
+        <div className="fixed inset-0 bg-white/20 backdrop-blur-sm flex items-center justify-center p-4 ">
+            <div className="border border-border rounded-lg shadow-lg max-w-md w-full p-6 bg-white">
                 <h2 className="text-lg font-semibold mb-4 text-card-foreground">Add New Task</h2>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
